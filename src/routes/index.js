@@ -10,11 +10,16 @@ import { Main, SignIn, SignUp } from "./pages";
 const Router = () => {
     /* 변수(state) 및 useEffect설정 부분 */
     const test = useState(0); // 예제를 위한 state
+    const [userInfo, setUserInfo] = useState(null);
 
     /* 예제를 위한 useEffect */
     useEffect(() => {
 
     }, []); // []로 설정이 되어 있으므로 페이지가 로드될 때 한번만 실행된다
+
+    const SignOut = () => {
+        setUserInfo(null);
+    }
 
     /* 출력할 페이지 설정 부분 */
     return (
@@ -35,11 +40,16 @@ const Router = () => {
                         * 윈도우의 경우 Ctrl을 누르신 뒤 App을 클릭하시면 해당 파일로 이동하실 수 있습니다.
                         * 맥의 경우 Command를 누르신 뒤 App을 클릭하시면 해당 파일로 이동하실 수 있습니다.
                     */
-                    element={<Main />}
+                    element={<Main
+                        userInfo={userInfo}
+                        SignOut={SignOut}
+                    />}
                 />
                 <Route
                     path="/signin"
-                    element={<SignIn />}
+                    element={<SignIn
+                        setUserInfo={setUserInfo}
+                    />}
                 />
                 <Route
                     path="/signup"

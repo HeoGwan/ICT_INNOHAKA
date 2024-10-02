@@ -3,8 +3,8 @@ import './SignInBox.css'
 
 // SignInBox와 차이점 비교 바람 (state 사용법)
 export const SignInBox = ({
-    email,
-    setEmail,
+    id,
+    setId,
     pw,
     setPw,
 }) => {
@@ -14,9 +14,9 @@ export const SignInBox = ({
             <div className="input-box">
                 <input
                     type="text"
-                    placeholder="이메일을 입력해주세요"
-                    onChange={e => { setEmail(e.target.value) }}
-                    value={email}
+                    placeholder="아이디를 입력해주세요"
+                    onChange={e => { setId(e.target.value) }}
+                    value={id}
                 />
                 <input
                     type="password"

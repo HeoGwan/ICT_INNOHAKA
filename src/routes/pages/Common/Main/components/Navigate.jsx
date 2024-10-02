@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import './Navigate.css';
 
 export const Navigate = ({
-    navigate
+    navigate,
+    userInfo,
+    SignOut,
 }) => {
     return (
         <div className="page-navigate">
@@ -14,9 +16,15 @@ export const Navigate = ({
             {
                 // Link태그 이용 시 to에 routes/index.js에서 설정한 path이름을 넣어준다.
             }
-            <Link to={'/signin'} className="navigate-button">
-                로그인
-            </Link>
+            {
+                userInfo ? 
+                <button className="navigate-button" onClick={SignOut}>
+                    로그아웃
+                </button> :
+                <Link to={'/signin'} className="navigate-button">
+                    로그인
+                </Link>
+            }
 
             {
                 // navigate함수 이용 시 navigate 파라미터에 routes/index.js에서 설정한 path이름을 넣어준다.

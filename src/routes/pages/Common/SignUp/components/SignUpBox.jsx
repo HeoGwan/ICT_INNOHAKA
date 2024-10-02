@@ -11,12 +11,12 @@ export const SignUpBox = ({
             <div className="input-box">
                 <input
                     type="text"
-                    placeholder="이메일을 입력하세요"
-                    value={userInfo.email}
+                    placeholder="아이디를 입력하세요"
+                    value={userInfo.id}
                     onChange={e => {
-                        const email = e.target.value;
+                        const id = e.target.value;
                         setUserInfo(prev => {
-                            return { ...prev, email };
+                            return { ...prev, id };
                         })
                     }}
                 />
@@ -28,6 +28,28 @@ export const SignUpBox = ({
                         const pw = e.target.value;
                         setUserInfo(prev => {
                             return { ...prev, pw };
+                        })
+                    }}
+                />
+                <input
+                    type="text"
+                    placeholder="이름를 입력하세요"
+                    value={userInfo.name}
+                    onChange={e => {
+                        const name = e.target.value;
+                        setUserInfo(prev => {
+                            return { ...prev, name };
+                        })
+                    }}
+                />
+                <input
+                    type="text"
+                    placeholder="전화번호를 입력하세요"
+                    value={userInfo.phone}
+                    onChange={e => {
+                        const phone = e.target.value;
+                        setUserInfo(prev => {
+                            return { ...prev, phone };
                         })
                     }}
                 />

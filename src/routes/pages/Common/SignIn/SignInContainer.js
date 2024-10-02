@@ -8,7 +8,9 @@ import SignInPresenter from "./SignInPresenter";
     * Container: 백엔드에서 데이터를 불러와 state 관리, 로직을 담당하는 함수 선언
     * Presenter: 불러온 데이터를 토대로 페이지에 출력, 함수 사용
 */
-const SignInContainer = () => {
+const SignInContainer = ({
+    setUserInfo,
+}) => {
     const navigate = useNavigate();
 
     // 로그인에 필요한 정보를 state로 관리한다
@@ -33,12 +35,12 @@ const SignInContainer = () => {
             })
         }}
      */
-    const [email, setEmail] = useState('');
+    const [id, setId] = useState('');
     const [pw, setPw] = useState('');
 
     const SignIn = async () => {
         // 이메일과 비밀번호를 입력하지 않을 시 알림창 띄우기 (에러 처리)
-        if (!email.length) {
+        if (!id.length) {
             alert('이메일을 입력해주세요!');
             return;
         }
@@ -63,7 +65,7 @@ const SignInContainer = () => {
             // JSON.stringify를 이용하여 보내고 싶은 데이터를 JSON형식으로 보낸다.
             // (SignUp과 차이점을 비교하기 바람)
             body: JSON.stringify({
-                email,
+                id,
                 pw,
             }),
         });
@@ -73,7 +75,9 @@ const SignInContainer = () => {
 
         if (data.status === 4091) {
             // 4091은 문제가 없다는 것을 뜻하므로 메인 페이지로 이동
+            setUserInfo(data.data);
             navigate('/');
+            return;
         }
 
         // 문제가 있을 경우 에러 메시지를 사용자에게 알려준다.
@@ -84,8 +88,8 @@ const SignInContainer = () => {
         <SignInPresenter
             SignIn={SignIn}
 
-            email={email}
-            setEmail={setEmail}
+            id={id}
+            setId={setId}
             pw={pw}
             setPw={setPw}
 

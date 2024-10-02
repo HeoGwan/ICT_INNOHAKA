@@ -8,7 +8,11 @@ import MainPresenter from "./MainPresenter";
     * Container: 백엔드에서 데이터를 불러와 state 관리, 로직을 담당하는 함수 선언
     * Presenter: 불러온 데이터를 토대로 페이지에 출력, 함수 사용
 */
-const MainContainer = () => {
+const MainContainer = ({
+    userInfo,
+    setUserInfo,
+    SignOut,
+}) => {
     // 페이지 이동을 위한 외부 함수
     const navigate = useNavigate();
 
@@ -79,6 +83,10 @@ const MainContainer = () => {
 
             SignIn={SignIn}
             isSignIn={isSignIn}
+
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            SignOut={SignOut}
 
             navigate={navigate}
         />

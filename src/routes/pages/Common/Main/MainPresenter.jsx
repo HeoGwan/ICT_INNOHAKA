@@ -35,6 +35,10 @@ const MainPresenter = ({
     SignIn,
     isSignIn,
 
+    userInfo,
+    setUserInfo,
+    SignOut,
+
     navigate,
 }) => {
     /*
@@ -101,6 +105,8 @@ const MainPresenter = ({
 
             <Navigate
                 navigate={navigate}
+                userInfo={userInfo}
+                SignOut={SignOut}
             />
         </div>
     )

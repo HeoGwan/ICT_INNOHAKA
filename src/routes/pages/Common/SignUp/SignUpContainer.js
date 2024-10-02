@@ -17,13 +17,15 @@ const SignUpContainer = () => {
     // 여러 개의 state대신 하나의 객체 state를 만들면 관리도 편해지고 API호출도 편해진다.
     // (SignIn과 비교해보면 차이점을 확연히 알 수 있다.)
     const [userInfo, setUserInfo] = useState({
-        email: '',
+        id: '',
         pw: '',
+        phone: '',
+        name: '',
     })
 
     const SignUp = async () => {
-        // 이메일과 비밀번호를 입력하지 않을 시 알림창 띄우기 (에러 처리)
-        if (!userInfo.email.length) {
+        // 아이디와 비밀번호를 입력하지 않을 시 알림창 띄우기 (에러 처리)
+        if (!userInfo.id.length) {
             alert('이메일을 입력해주세요!');
             return;
         }
@@ -50,10 +52,12 @@ const SignUpContainer = () => {
         // 결과 받은 후 문제 없으면 메인 페이지로 이동
         const data = await result.json();
 
+        console.log(data)
 
         if (data.status === 4091) {
             // 4091은 문제가 없다는 것을 뜻하므로 메인 페이지로 이동
             navigate('/');
+            return;
         }
 
         // 문제가 있을 경우 에러 메시지를 사용자에게 알려준다.

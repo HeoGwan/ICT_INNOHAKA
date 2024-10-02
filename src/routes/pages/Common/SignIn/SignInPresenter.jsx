@@ -6,8 +6,8 @@ import './SignIn.css';
 const SignInPresenter = ({
     SignIn,
 
-    email,
-    setEmail,
+    id,
+    setId,
     pw,
     setPw,
 
@@ -21,8 +21,8 @@ const SignInPresenter = ({
 
             {/* SignUpPresenter와 차이점 비교 바람(state 간결화) */}
             <SignInBox
-                email={email}
-                setEmail={setEmail}
+                id={id}
+                setId={setId}
                 pw={pw}
                 setPw={setPw}
             />
