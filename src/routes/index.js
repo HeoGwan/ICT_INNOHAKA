@@ -1,8 +1,3 @@
-/**
-    * 2024-03-17~
-    * @Made_by_HeoGwan
-*/
-
 import React, { useState, useEffect } from "react";
 
 /* URL 설정을 위한 라이브러리 */

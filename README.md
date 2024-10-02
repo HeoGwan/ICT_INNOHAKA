@@ -13,7 +13,7 @@ package.json을 확인하시면 프로젝트에 사용되는 라이브러리 전
 
 ***
 
-[백엔드 예제 보러가기](https://github.com/HeoGwan/website_back)
+[백엔드 예제 보러가기](https://github.com/HeoGwan/DB_Design_Back_Template?tab=readme-ov-file)
 
 ***
 
