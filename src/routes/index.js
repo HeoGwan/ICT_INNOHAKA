@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { Main } from "./pages";
+import { ApiTest, Main } from "./pages";
 
 import '../index.css';
 
@@ -11,6 +11,10 @@ const Router = () => {
                 <Route
                     path="/"
                     element={<Main />}
+                />
+                <Route
+                    path="/apitest"
+                    element={<ApiTest />}
                 />
             </Routes>
         </div>

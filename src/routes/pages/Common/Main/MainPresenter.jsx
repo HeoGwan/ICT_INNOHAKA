@@ -7,7 +7,12 @@ const MainPresenter = ({
 }) => {
     return (
         <div className="main-container">
-            Test
+            <div
+                className="move"
+                onClick={() => navigate('apitest')}
+            >
+                API Test
+            </div>
         </div>
     )
 }
