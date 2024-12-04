@@ -20,7 +20,9 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                 muted
             /> */}
 
-            <div className="course-title">코스를 선택해주세요</div>
+            <div className="course-title">
+                <span style={{fontSize : '1.5rem', color : '#FFFFFF'}}><span style={{fontSize : '2.5rem', color : '#00098E', marginRight : '4px'}}>관광 코스  </span>  를 선택해주세요</span>
+            </div>
             <div className="course-wrap">
                 <div
                     className="course-item"

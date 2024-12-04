@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import './SelectCourseInfo.css';
+import RedLine from '../../../../assets/course_image/red/RedLine.png';
+import GreenLine from '../../../../assets/course_image/green/GreenLine.png';
+import OrangeLine from '../../../../assets/course_image/orange/image.png';
 
 const SelectCourseInfoPresenter = ({
     courses,
@@ -12,15 +15,17 @@ const SelectCourseInfoPresenter = ({
     selectCourse,
 }) => {
     const [title] = useState({
-        'red': '레드라인 코스',
-        'green': '그린라인 코스',
-        'orange': '오렌지라인 코스',
+        'red': RedLine,
+        'green': GreenLine,
+        'orange': OrangeLine,
     })
 
     return (
         <div className="select-course-info-container">
             <div className="select-course-info-header">
-                <span>{title[color]}</span>
+                <img src={title[color]}
+                    className="select-course-img-container"
+                />
             </div>
             {
                 courses?.map((course, idx) => {

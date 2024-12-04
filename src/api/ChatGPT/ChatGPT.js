@@ -1,5 +1,3 @@
-import OpenAI from 'openai';
-
 const BASE_URL = 'https://api.openai.com/v1';
 
 const API_KEY = process.env.REACT_APP_OPEN_AI_KEY;
@@ -53,7 +51,7 @@ Always respond strictly in valid JSON format without any additional text or expl
             }),
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             throw new Error(`API Error: ${response.statusText}`);
         }
 

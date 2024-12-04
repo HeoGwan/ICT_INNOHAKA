@@ -10,11 +10,12 @@ import Green09 from './course_green_09.png';
 import Green10 from './course_green_10.png';
 import Green11 from './course_green_11.png';
 import Green12 from './course_green_12.png';
+import GreenLine from './GreenLine.png';
 
 const GreenImages = [
     Green01, Green02, Green03, Green04, Green05,
     Green06, Green07, Green08, Green09, Green10,
-    Green11, Green12
+    Green11, Green12, GreenLine
 ];
 
 export default GreenImages;

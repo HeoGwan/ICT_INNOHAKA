@@ -10,11 +10,12 @@ import Red09 from './course_red_09.png';
 import Red10 from './course_red_10.png';
 import Red11 from './course_red_11.png';
 import Red12 from './course_red_12.png';
+import RedLine from './RedLine.png';
 
 const RedImages = [
     Red01, Red02, Red03, Red04, Red05,
     Red06, Red07, Red08, Red09, Red10,
-    Red11, Red12
+    Red11, Red12, RedLine
 ];
 
 export default RedImages;
