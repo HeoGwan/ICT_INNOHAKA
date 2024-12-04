@@ -65,11 +65,10 @@ const ChatBotContainer = () => {
     /* ===== FUNCTION ===== */
 
     const saveStore = (label, store) => {
+        handleSendPrompt(store[label]);
         setStores(store[label]);
         setButtonIndex((prev) => prev + 1);
         setChatMessage('안드시는 음식이 있으신가요?');
-
-        handleSendPrompt(store[label]);
     };
 
     // 1. 시작 (가리별 음식점 분류)
@@ -100,10 +99,11 @@ const ChatBotContainer = () => {
 
     // 2. 음식 카테고리 추출
     const handleSendPrompt = async (stores) => {
-        console.log(stores);
         if (!stores || stores.length === 0) {
             alert('음식점 데이터가 준비되지 않았습니다.');
-            return;
+            // setButtonIndex((prev) => prev - 1);
+            navigate(-1);
+            return false;
         }
 
         try {
@@ -144,10 +144,9 @@ const ChatBotContainer = () => {
     const compactStoresData = stores?.map((store) => ({
         place_name: store.place_name,
         category_name: store.category_name,
-        // distance: store.distance,
-        // address_name: store.address_name,
-        // x: store.x,
-        // y: store.y,
+        address_name: store.address_name,
+        x: store.x,
+        y: store.y,
     }));
 
     // 3. 사용자가 못먹는 음식 거르기
@@ -178,8 +177,8 @@ const ChatBotContainer = () => {
                         current_course: {
                             place_name: location.state[0],
                             address_name: location.state[1],
-                            lat: location.state[2],
-                            lng: location.state[3],
+                            lat: location.state[3],
+                            lng: location.state[2],
                         },
                         current_results: parsedStores,
                     }
@@ -192,6 +191,8 @@ const ChatBotContainer = () => {
             console.error('Error Filtering stores', e);
         }
     };
+
+    console.log(filteredStores)
 
 
     // 해당 코스 음식점들 추출

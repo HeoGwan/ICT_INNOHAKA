@@ -165,11 +165,16 @@ const ResultContainer = ({
         (
             async () => {
                 const { current_course, current_results } = location.state;
+                console.log(current_course)
                 setCourse(current_course);
                 setCenter({
-                    lat: current_course.lat,
-                    lng: current_course.lng,
+                    lat: current_course.lng,
+                    lng: current_course.lat,
                 });
+                setMarker({
+                    lat: current_course.lng,
+                    lng: current_course.lat,
+                })
                 setResults(current_results);
             }
         )()

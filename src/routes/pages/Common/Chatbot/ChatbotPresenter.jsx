@@ -24,7 +24,12 @@ const ChatBotPresenter = ({
 
     /* ===== RENDER ===== */
     return (
-        <div className='chatbot-container'>
+        <div
+            className='chatbot-container'
+            style={{
+                position: 'relative'
+            }}
+        >
             <BackButton />
             <ChatbotList
 
@@ -46,6 +51,20 @@ const ChatBotPresenter = ({
                 buttonIndex={buttonIndex}
                 groupedStores={groupedStores}
             />
+            {
+                buttonIndex === 1 &&
+                <button
+                    className='start-button'
+                    style={{
+                        position: 'absolute',
+                        top: '6.5rem',
+                        right: '2rem',
+                    }}
+                    onClick={onFilteredStores}
+                >
+                    결과보기
+                </button>
+            }
         </div>
     );
 };

@@ -2,11 +2,11 @@ const BASE_URL = 'https://api.openai.com/v1';
 
 const API_KEY = process.env.REACT_APP_OPEN_AI_KEY;
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const getChatGPTResponse = async (prompt) => {
     try {
-        await delay(1000);
+        // await delay(1000);
         const response = await fetch(`${BASE_URL}/chat/completions`, {
             method: 'POST',
             headers: {
@@ -24,7 +24,7 @@ export const getChatGPTResponse = async (prompt) => {
 1. Extract and categorize the "category_name" field from the restaurant data into a concise, non-redundant array of categories, removing duplicates. Respond only with the JSON array. Example:
    ["고기", "면", "해물", "생선"] and just one word in one index.
 
-2. If the user provides specific categories, filter the restaurant data to include only the restaurants that match any of the provided categories. Return the filtered list in the same JSON structure as the input. Max 5. 
+2. If the user provides specific categories, filter the restaurant data to include only the restaurants that match any of the provided categories. Return the filtered list in the same JSON structure as the input. Max 10. 
     'category_name' is always have only one last word.
 Example:
    [
@@ -46,7 +46,7 @@ Always respond strictly in valid JSON format without any additional text or expl
 `
                     },
                     { role: 'user', content: prompt }],
-                max_tokens: 200,
+                max_tokens: 4097,
                 temperature: 0.5,
             }),
         });

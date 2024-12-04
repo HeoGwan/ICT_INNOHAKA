@@ -47,8 +47,6 @@ const ChatbotList = ({
                 <span style={{ ...styles.title }}>{courseName}</span>
                 <span style={{ fontWeight: 100 }}>주변의 음식점을 찾아드릴게요 !</span>
                 <div className='top'>
-                    <button className='start-button' onClick={onDistanceFilter}>시작하기</button>
-                    <button className='start-button' onClick={onFilteredStores}>테스트</button>
                 </div>
             </div>
             <div className='card-container'>
@@ -56,20 +54,18 @@ const ChatbotList = ({
                     content={chatMessage}
                 />
             </div>
-            {
-                <div className='buttons-container'>
-                    <ChatbotButtonList
-                        categories={categories}
+            <div className='buttons-container'>
+                <ChatbotButtonList
+                    categories={categories}
 
-                        selectedCategories={selectedCategories}
-                        onClick={onCategoryClick}
+                    selectedCategories={selectedCategories}
+                    onClick={onCategoryClick}
 
-                        buttons={buttons}
-                        buttonIndex={buttonIndex}
-                        groupedStores={groupedStores}
-                    />
-                </div>
-            }
+                    buttons={buttons}
+                    buttonIndex={buttonIndex}
+                    groupedStores={groupedStores}
+                />
+            </div>
         </div>
     );
 };

@@ -63,10 +63,11 @@
     margin-bottom: 1rem;
 }
 
-.chatbot-list-container .start-button {
+.start-button {
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 0.5rem 1.25rem;
     background-color: transparent;
     font-size: 1.25rem;
+    cursor: pointer;
 }
