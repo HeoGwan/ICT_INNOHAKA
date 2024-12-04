@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import ChatBotPresenter from "./ChatBotPresenter";
+import ChatBotPresenter from "./ChatbotPresenter";
+import { useLocation } from "react-router-dom";
 
 const sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 const ChatBotContainer = () => {
+    const location = useLocation();
+    console.log(location.state);
     const [decide, setDecide] = useState('');
     const [questionList, setQuestionList] = useState([
         {
@@ -76,6 +79,9 @@ const ChatBotContainer = () => {
                 }
             ]
         })
+
+        // 선택한 답변을 기반으로 프롬프트를 작성한 다음 ChatGPT에게 질문을 던진다
+        
 
         blockPrevQuestion(index);
         setShowQuestionCount(prev => prev + 1);

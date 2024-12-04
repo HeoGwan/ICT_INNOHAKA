@@ -35,6 +35,8 @@
     align-items: center;
     gap: 5rem;
 
+    width: 70%;
+
     animation: slide .5s ease-in-out;
 }
 

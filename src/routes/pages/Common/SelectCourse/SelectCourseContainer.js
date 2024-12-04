@@ -10,7 +10,10 @@ const SelectCourseContainer = ({
 
     const selectCourse = async (course) => {
         const selectedCourse = await courseUtil.getCourse(course);
-        console.log(selectedCourse)
+        
+        navigate('/chatbot', {
+            state: selectedCourse
+        })
     }
 
     return (

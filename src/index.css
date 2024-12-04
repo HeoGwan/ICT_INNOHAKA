@@ -22,3 +22,7 @@ body,
 .move {
   cursor: pointer;
 }
+
+li {
+  list-style: none;
+}

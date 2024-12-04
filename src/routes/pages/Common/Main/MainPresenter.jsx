@@ -1,7 +1,6 @@
 import React from "react";
-import LandingVideo from '../../../../assets/Landing.mov';
+// import LandingVideo from '../../../../assets/Landing.mov';
 import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
 import './Main.css';
 
 
@@ -11,13 +10,13 @@ const MainPresenter = () => {
     return (
         <div className="main-container">
             {/* 배경 동영상 */}
-            <video 
+            {/* <video 
                 className="background-video" 
                 src={LandingVideo} 
                 autoPlay 
                 loop 
                 muted
-            />
+            /> */}
 
             {/* 콘텐츠 */}
             <div className="content">

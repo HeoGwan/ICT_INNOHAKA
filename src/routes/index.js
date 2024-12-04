@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { ApiTest, Main, SelectCourse, ChatBot } from "./pages";
+import { ApiTest, Main, SelectCourse, ChatBot, Result } from "./pages";
 
 import '../index.css';
 
@@ -23,6 +23,10 @@ const Router = () => {
                 <Route
                     path="/selectcourse"
                     element={<SelectCourse />}
+                />
+                <Route
+                    path="/result"
+                    element={<Result />}
                 />
             </Routes>
         </div>
