@@ -1,12 +1,14 @@
 import kakaoUtil from "./KakaoUtil";
 
 class CourseUtil {
+    #courses = {};
+
     constructor() {
         if (!CourseUtil.instance) {
             CourseUtil.instance = this;
         }
 
-        this.courese = {
+        this.#courses = {
             'red_line': this.getCsvData('red_line'),
             'green_line': this.getCsvData('green_line'),
             'orange_line': this.getCsvData('orange_line'),
@@ -22,7 +24,7 @@ class CourseUtil {
     }
 
     async getCourse(courseName) {
-        return this.courese[courseName];
+        return this.#courses[courseName];
     }
 }
 

@@ -13,6 +13,12 @@ const MainPresenter = ({
             >
                 API Test
             </div>
+            <div
+                className="move"
+                onClick={() => navigate('selectcourse')}
+            >
+                SELECT COURSE
+            </div>
         </div>
     )
 }
