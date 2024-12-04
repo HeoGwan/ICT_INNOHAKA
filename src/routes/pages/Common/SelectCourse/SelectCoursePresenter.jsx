@@ -1,7 +1,7 @@
 import React from "react";
 import './SelectCourse.css';
 import { useNavigate } from "react-router-dom";
-// import LandingVideo from '../../../../assets/Landing.mov';
+import LandingVideo from '../../../../assets/Landing.mov';
 
 import RedCourse from '../../../../assets/red_course.jpg';
 import GreenCourse from '../../../../assets/green_course.jpg';
@@ -12,15 +12,17 @@ const SelectCoursePresenter = ({ selectCourse }) => {
 
     return (
         <div className="course-select-container">
-            {/* <video 
+            <video 
                 className="background-video" 
                 src={LandingVideo} 
                 autoPlay 
                 loop 
                 muted
-            /> */}
+            />
 
-            <div className="course-title">코스를 선택해주세요</div>
+            <div className="course-title">
+                <span style={{fontSize : '1.5rem', color : '#FFFFFF'}}><span style={{fontSize : '2.5rem', color : '#00098E', marginRight : '4px'}}>관광 코스  </span>  를 선택해주세요</span>
+            </div>
             <div className="course-wrap">
                 <div
                     className="course-item"

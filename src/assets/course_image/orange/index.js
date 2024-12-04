@@ -8,10 +8,12 @@ import Orange07 from './course_orange_07.png';
 import Orange08 from './course_orange_08.png';
 import Orange09 from './course_orange_09.png';
 import Orange10 from './course_orange_10.png';
+import OrangeLine from './image.png';
 
 const OrangeImages = [
     Orange01, Orange02, Orange03, Orange04, Orange05,
     Orange06, Orange07, Orange08, Orange09, Orange10,
+    OrangeLine
 ];
 
 export default OrangeImages;

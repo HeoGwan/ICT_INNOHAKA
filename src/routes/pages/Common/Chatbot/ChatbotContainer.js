@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ChatBotPresenter from "./ChatbotPresenter";
+import ChatBotPresenter from "./ChatBotPresenter";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import ChatbotPresenter from './ChatbotPresenter'
