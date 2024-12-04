@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ChatBotPresenter from "./ChatbotPresenter";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from 'react';
 import ChatbotPresenter from './ChatbotPresenter'
 import { getChatGPTResponse } from '../../../../api/ChatGPT/ChatGPT';
 import courseUtil from '../../../../utils/courseUtil';
