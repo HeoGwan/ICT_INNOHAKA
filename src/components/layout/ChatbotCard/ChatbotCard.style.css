@@ -1,0 +1,16 @@
+.chatbot-card-container {
+    width: 100%;
+}
+
+.chatbot-card-container .card {
+    width: fit-content;
+    max-width: 75%;
+    word-wrap: break-word;
+
+    padding: 1rem;
+    border-radius: 12px;
+
+    font-size: 1.25rem;
+
+    background-color: #D9D9D9;
+}

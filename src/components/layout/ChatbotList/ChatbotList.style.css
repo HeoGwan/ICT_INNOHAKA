@@ -1,0 +1,72 @@
+.chatbot-list-container {
+    position: relative;
+
+    width: 95vw;
+    height: 95vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem 1rem 0 1rem;
+
+    background-color: #FFFFFF;
+
+    border-radius: 12px;
+}
+
+.chatbot-list-container .title {
+    position: relative;
+
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+
+    border-bottom: 1px solid #d3d3d3;
+
+    margin-bottom: 1rem;
+}
+
+.chatbot-list-container .card-container {
+    width: 100%;
+    height: 100%;
+}
+
+.chatbot-list-container .buttons-container {
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    flex-wrap: wrap;
+
+    padding: 1rem;
+
+    border-top: 1px solid #d3d3d3;
+
+    border-radius: 0 0 12px 12px;
+}
+
+.chatbot-list-container .top {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 1rem;
+}
+
+.chatbot-list-container .start-button {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 0.5rem 1.25rem;
+    background-color: transparent;
+    font-size: 1.25rem;
+}

@@ -1,27 +1,34 @@
+import { ChatbotList } from '../../../../components';
 import './Chatbot.style.css';
 
 const ChatbotPresenter = ({
-    prompt,
     reply,
-    onPromptChange,
-    onSendPrompt
+
+    onSendPrompt,
+    onFilteredStores,
+
+    selectedLine,
+    selectedCourse,
+
+    selectedCategories,
+    onCategoryClick,
 }) => {
 
     /* ===== RENDER ===== */
     return (
-        <div className='main-container'>
-            <input
-                value={prompt}
-                onChange={onPromptChange}
+        <div className='chatbot-container'>
+            <ChatbotList
+                questions={reply}
+
+                onSendPrompt={onSendPrompt}
+                onFilteredStores={onFilteredStores}
+
+                lineName={selectedLine}
+                courseName={selectedCourse}
+
+                selectedCategories={selectedCategories}
+                onCategoryClick={onCategoryClick}
             />
-            <button
-                onClick={onSendPrompt}
-            >
-                전송
-            </button>
-            <span>
-                {reply}
-            </span>
         </div>
     );
 };
