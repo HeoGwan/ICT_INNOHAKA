@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ApiTest, Main, SelectCourse, ChatBot, SelectCourseInfo, Result } from "./pages";
 
 import '../index.css';
 
 const Router = () => {
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (pathname === '/') {
+            navigate('/main');
+        }
+    }, [pathname]);
+
     return (
         <div className="app">
             <Routes>
@@ -26,11 +35,11 @@ const Router = () => {
                 />
                 <Route
                     path="/result"
-                    element={<Result/>}
+                    element={<Result />}
                 />
                 <Route
                     path="/selectcourseinfo/:color"
-                    element={<SelectCourseInfo/>}
+                    element={<SelectCourseInfo />}
                 />
             </Routes>
         </div>

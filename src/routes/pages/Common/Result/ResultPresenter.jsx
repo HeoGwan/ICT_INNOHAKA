@@ -4,6 +4,7 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import Pin from '../../../../assets/Pin.png';
 
 import './Result.css';
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const ResultPresenter = ({
     navigate,
@@ -19,6 +20,10 @@ const ResultPresenter = ({
 
     return (
         <div className="result-container">
+            <BackButton
+                direction="left"
+                destination="first"
+            />
             <Map
                 center={{ lat: center.lat, lng: center.lng }}
                 style={{ width: '100%', height: '100vh' }}

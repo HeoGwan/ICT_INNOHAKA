@@ -153,13 +153,20 @@ const ResultContainer = ({
         lat: 35.0219245768,
         lng: 129.0192935576,
     });
-    const [marker, setMarker] = useState({ lat: -1, lng: -1 });
+    const [marker, setMarker] = useState({
+        lat: 35.0219245768,
+        lng: 129.0192935576,
+    });
 
 
     useEffect(() => {
         (
             async () => {
                 setCenter({
+                    lat: course.lat,
+                    lng: course.lng,
+                })
+                setMarker({
                     lat: course.lat,
                     lng: course.lng,
                 })

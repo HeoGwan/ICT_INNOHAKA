@@ -3,6 +3,7 @@ import './SelectCourseInfo.css';
 import RedLine from '../../../../assets/course_image/red/RedLine.png';
 import GreenLine from '../../../../assets/course_image/green/GreenLine.png';
 import OrangeLine from '../../../../assets/course_image/orange/image.png';
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const SelectCourseInfoPresenter = ({
     courses,
@@ -22,6 +23,7 @@ const SelectCourseInfoPresenter = ({
 
     return (
         <div className="select-course-info-container">
+            <BackButton />
             <div className="select-course-info-header">
                 <img src={title[color]}
                     className="select-course-img-container"

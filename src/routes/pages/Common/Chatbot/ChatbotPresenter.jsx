@@ -4,6 +4,7 @@ import ChatBotTop from './components/ChatBotTop';
 import ChatBotBody from './components/ChatBotBody';
 import { ChatbotList } from '../../../../components';
 import './Chatbot.style.css';
+import BackButton from '../../../../components/BackButton/BackButton';
 
 const ChatBotPresenter = ({
     chatList,
@@ -20,6 +21,7 @@ const ChatBotPresenter = ({
 }) => {
     return (
         <div className='chatbot-container'>
+            <BackButton />
             <ChatbotList
                 chatList={chatList}
                 questions={reply}

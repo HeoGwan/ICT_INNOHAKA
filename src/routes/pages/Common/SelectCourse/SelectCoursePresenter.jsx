@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import RedCourse from '../../../../assets/red_course.jpg';
 import GreenCourse from '../../../../assets/green_course.jpg';
 import OrangeCourse from '../../../../assets/orange_course.jpg';
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const SelectCoursePresenter = ({ selectCourse }) => {
     const navigate = useNavigate();
@@ -20,8 +21,9 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                 muted
             /> */}
 
+            <BackButton />
             <div className="course-title">
-                <span style={{fontSize : '1.5rem', color : '#FFFFFF'}}><span style={{fontSize : '2.5rem', color : '#00098E', marginRight : '4px'}}>관광 코스  </span>  를 선택해주세요</span>
+                <span style={{ fontSize: '1.5rem', color: '#FFFFFF' }}><span style={{ fontSize: '2.5rem', color: '#00098E', marginRight: '4px' }}>관광 코스  </span>  를 선택해주세요</span>
             </div>
             <div className="course-wrap">
                 <div

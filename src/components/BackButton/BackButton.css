@@ -1,0 +1,27 @@
+.back-button {
+    position: absolute;
+    top: 0;
+    margin-top: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    background-color: white;
+
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+}
+
+.back-button .arrow {
+    font-weight: bold;
+    color: #000000d3;
+}
+
+.back-button .button-text {
+    color: #0000009a;
+}
