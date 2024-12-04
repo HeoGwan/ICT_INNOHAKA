@@ -1,29 +1,23 @@
-import './Chatbot.style.css';
+import './ChatBot.css';
+// import Top from '../../../../components/Top';
+import ChatBotTop from './components/ChatBotTop';
+import ChatBotBody from './components/ChatBotBody';
 
-const ChatbotPresenter = ({
-    prompt,
-    reply,
-    onPromptChange,
-    onSendPrompt
+const ChatBotPresenter = ({
+    chatList,
 }) => {
-
-    /* ===== RENDER ===== */
     return (
-        <div className='main-container'>
-            <input
-                value={prompt}
-                onChange={onPromptChange}
+        <div className='chat-room-container'>
+            {/* <Top
+                notShowIcon={true}
+                title={'빠른 요청'}
+                paddingBottom={'1rem'}
+            /> */}
+            <ChatBotBody
+                chatList={chatList}
             />
-            <button
-                onClick={onSendPrompt}
-            >
-                전송
-            </button>
-            <span>
-                {reply}
-            </span>
         </div>
     );
 };
 
-export default ChatbotPresenter;
+export default ChatBotPresenter;

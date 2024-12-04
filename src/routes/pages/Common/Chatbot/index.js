@@ -1,2 +1,2 @@
-import ChatbotContainer from './ChatbotContainer';
-export default ChatbotContainer;
+import ChatBotContainer from "./ChatBotContainer";
+export default ChatBotContainer;

@@ -1,0 +1,19 @@
+.chatbot-button-container {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.chatbot-button-container .chatbot-button {
+    width: 100%;
+    
+    padding: 10px;
+    background-color: #87CEEB;
+    border: none;
+    color: white;
+
+    font-size: 1rem;
+}
+
+.chatbot-button-container .chatbot-button.dark {
+    background-color: #005A8D7f;
+}

@@ -46,11 +46,13 @@
 
     gap: 1rem;
 
-    font-size: 24pt;
+    width: 100%;
 
     cursor: pointer;
 
-    padding: 3rem;
+    font-size: 1.1rem;
+
+    padding: 2.5rem;
 
     border-radius: 25px;
 
@@ -66,4 +68,8 @@
 .course-container .course-item:active {
     box-shadow: 0 5px 10px #a5a6a5;
     transform: translateY(10px);
+}
+
+.button-title {
+    font-family: 'Nanum Gothic';
 }

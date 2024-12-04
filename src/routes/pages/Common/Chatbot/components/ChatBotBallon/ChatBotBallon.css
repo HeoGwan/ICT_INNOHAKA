@@ -1,0 +1,29 @@
+.chat-ballon {
+    /* padding: 1rem; */
+    font-size: 1rem;
+    border-radius: 10px;
+
+    width: fit-content;
+    max-width: 300px;
+    line-height: 1.5rem;
+
+    word-break: keep-all;
+}
+
+.chat-ballon.self {
+    background-color: #1E90FF;
+    align-self: flex-end;
+    color: white;
+}
+
+.chat-ballon.other {
+    padding: 1rem;
+    background-color: white;
+    color: black;
+}
+
+.chat-ballon .chat-ballon-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
