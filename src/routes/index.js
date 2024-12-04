@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { ApiTest, Chatbot, Main } from "./pages";
+import { ApiTest, Chatbot, Main, SelectCourse } from "./pages";
 
 import '../index.css';
 
@@ -20,10 +20,13 @@ const Router = () => {
                     path='/chatbot'
                     element={<Chatbot />}
                 />
+                <Route
+                    path="/selectcourse"
+                    element={<SelectCourse />}
+                />
             </Routes>
         </div>
     )
 }
 
-/* App/App.js에서 import하기 위한 설정 */
 export default Router;
