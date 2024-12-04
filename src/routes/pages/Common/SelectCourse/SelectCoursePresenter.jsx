@@ -32,7 +32,7 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                         selectCourse('red_line', 'red');
                     }}
                 >
-                    <span style={{ color: 'red' }}>레드라인</span>
+                    <span style={{ color: 'red', fontWeight : 'bold' }}>레드라인</span>
                     <img src={RedCourse} alt="부산시티투어 레드라인 코스" />
                 </div>
                 <div
@@ -41,7 +41,7 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                         selectCourse('green_line', 'green');
                     }}
                 >
-                    <span style={{ color: 'green' }}>그린라인</span>
+                    <span style={{ color: 'green', fontWeight : 'bold' }}>그린라인</span>
                     <img src={GreenCourse} alt="부산시티투어 그린라인 코스" />
                 </div>
                 <div
@@ -50,7 +50,7 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                         selectCourse('orange_line', 'orange');
                     }}
                 >
-                    <span style={{ color: 'orange' }}>오렌지라인</span>
+                    <span style={{ color: 'orange', fontWeight : 'bold' }}>오렌지라인</span>
                     <img src={OrangeCourse} alt="부산시티투어 오렌지라인 코스" />
                 </div>
             </div>

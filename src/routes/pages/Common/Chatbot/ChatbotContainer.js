@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ChatBotPresenter from './ChatbotPresenter';
+import { useLocation } from "react-router-dom";
+import ChatBotPresenter from './ChatbotPresenter';
 import { getChatGPTResponse } from '../../../../api/ChatGPT/ChatGPT';
 import kakaoUtil from '../../../../utils/KakaoUtil';
 
@@ -284,6 +286,7 @@ const ChatBotContainer = () => {
     /* ===== RENDER ===== */
     return (
         <ChatBotPresenter
+            chatList={chatList}
             reply={reply}
 
             onSendPrompt={handleSendPrompt}
