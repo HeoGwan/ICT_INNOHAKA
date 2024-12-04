@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { ApiTest, Main } from "./pages";
+import { ApiTest, Chatbot, Main } from "./pages";
 
 import '../index.css';
 
@@ -15,6 +15,10 @@ const Router = () => {
                 <Route
                     path="/apitest"
                     element={<ApiTest />}
+                />
+                <Route
+                    path='/chatbot'
+                    element={<Chatbot />}
                 />
             </Routes>
         </div>
