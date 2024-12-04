@@ -1,4 +1,4 @@
-.course-container {
+.course-select-container {
     width: 100%;
     height: 100%;
 
@@ -8,6 +8,17 @@
     align-items: center;
 
     gap: 5rem;
+}
+
+/* 배경 동영상 스타일 */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 화면 크기에 맞게 자르기 */
+    z-index: -1; /* 콘텐츠 뒤에 위치 */
 }
 
 @keyframes slide {
@@ -22,14 +33,14 @@
     }
 }
 
-.course-container .course-title {
+.course-select-container  .course-title {
     font-size: 30pt;
     font-weight: bold;
 
     animation: slide .5s ease-in-out;
 }
 
-.course-container .course-wrap {
+.course-select-container  .course-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,11 +51,12 @@
     animation: slide .5s ease-in-out;
 }
 
-.course-container .course-item {
+.course-select-container  .course-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #FFFFFF;
 
     gap: 1rem;
 
@@ -62,12 +74,12 @@
     transition: 0.25s;
 }
 
-.course-container .course-item:hover {
+.course-select-container  .course-item:hover {
     box-shadow: 0 20px 10px #a5a6a5;
     transform: translateY(-15px);
 }
 
-.course-container .course-item:active {
+.course-select-container  .course-item:active {
     box-shadow: 0 5px 10px #a5a6a5;
     transform: translateY(10px);
 }
@@ -75,3 +87,4 @@
 .button-title {
     font-family: 'Nanum Gothic';
 }
+
