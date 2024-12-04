@@ -13,11 +13,12 @@ class KakaoUtil {
         return KakaoUtil.instance;
     }
 
-    setParams(x, y, radius) {
+    setParams(x, y, radius, page) {
         this.params = {
             x,
             y,
             radius,
+            page,
             category_group_code: this.category,
         };
 
@@ -30,13 +31,11 @@ class KakaoUtil {
             return;
         }
 
-        this.setParams(x, y, radius);
+        console.log(radius, page);
+
+        this.setParams(x, y, radius, page);
 
         let reqUrl = `${this.apiUrl}?${this.queryString}`;
-
-        if (page) {
-            reqUrl += `&page=${page}`;
-        }
 
         const result = await fetch(reqUrl, {
             method: 'get',
@@ -45,26 +44,26 @@ class KakaoUtil {
         return await result.json();
     }
 
-    async getPlace(place, page) {
-        if (!place) {
-            alert('x, y, radius를 설정하세요');
-            return;
-        }
+    // async getPlace(place, page) {
+    //     if (!place) {
+    //         alert('x, y, radius를 설정하세요');
+    //         return;
+    //     }
 
-        this.setParams(place.x, place.y, place.radius);
+    //     this.setParams(place.x, place.y, place.radius);
 
-        let reqUrl = `${this.apiUrl}?${this.queryString}`;
+    //     let reqUrl = `${this.apiUrl}?${this.queryString}`;
 
-        if (page) {
-            reqUrl += `&page=${page}`;
-        }
+    //     if (page) {
+    //         reqUrl += `&page=${page}`;
+    //     }
 
-        const result = await fetch(reqUrl, {
-            method: 'get',
-            headers: this.headers,
-        });
-        return await result.json();
-    }
+    //     const result = await fetch(reqUrl, {
+    //         method: 'get',
+    //         headers: this.headers,
+    //     });
+    //     return await result.json();
+    // }
 
     async getCoords(placeName) {
         const apiUrl = 'https://dapi.kakao.com/v2/local/search/address';
