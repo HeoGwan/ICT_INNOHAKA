@@ -26,7 +26,6 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                     className="course-item"
                     onClick={() => {
                         selectCourse('red_line', 'red');
-                        // navigate('/selectcourseinfo'); // URL에 red 전달
                     }}
                 >
                     <span style={{ color: 'red' }}>레드라인</span>
@@ -36,7 +35,6 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                     className="course-item"
                     onClick={() => {
                         selectCourse('green_line', 'green');
-                        // navigate('/selectcourseinfo/green'); // URL에 green 전달
                     }}
                 >
                     <span style={{ color: 'green' }}>그린라인</span>
@@ -46,7 +44,6 @@ const SelectCoursePresenter = ({ selectCourse }) => {
                     className="course-item"
                     onClick={() => {
                         selectCourse('orange_line', 'orange');
-                        // navigate('/selectcourseinfo/orange'); // URL에 orange 전달
                     }}
                 >
                     <span style={{ color: 'orange' }}>오렌지라인</span>

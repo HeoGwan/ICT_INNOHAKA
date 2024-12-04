@@ -25,6 +25,7 @@ const SelectCourseInfoContainer = () => {
         // navigate state로 넘어온 코스 값을 state에 저장
         if (!location.state) {
             alert('잘못된 접근입니다.');
+            navigate('/');
             return;
         }
 
@@ -50,6 +51,16 @@ const SelectCourseInfoContainer = () => {
         setCourses(result);
     }, []);
 
+    // 코스 선택 시 해당 정보가 넘어감
+    const selectCourse = (course) => {
+        // 어딘가로 course 정보를 보낸다
+        // course 정보는 아래와 같다
+        // [정류장 이름, 주소, 위도, 경도] => public 폴더의 csv 폴더의 csv 파일 정보
+        navigate('/', {
+            state: course
+        })
+    }
+
     return (
         <SelectCourseInfoPresenter
             courses={courses}
@@ -58,6 +69,8 @@ const SelectCourseInfoContainer = () => {
 
             size={size}
             maxLength={maxLength}
+
+            selectCourse={selectCourse}
         />
     )
 };

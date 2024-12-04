@@ -8,6 +8,8 @@ const SelectCourseInfoPresenter = ({
 
     size,
     maxLength,
+
+    selectCourse,
 }) => {
     const [title] = useState({
         'red': '레드라인 코스',
@@ -55,6 +57,7 @@ const SelectCourseInfoPresenter = ({
                                                     ${color}
                                                 `
                                             }
+                                            onClick={() => selectCourse(c)}
                                         >
                                             {
                                                 current_index <= maxLength &&
