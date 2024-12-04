@@ -2,47 +2,105 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ChatBotPresenter from './ChatbotPresenter';
 import { getChatGPTResponse } from '../../../../api/ChatGPT/ChatGPT';
-import courseUtil from '../../../../utils/courseUtil';
 import kakaoUtil from '../../../../utils/KakaoUtil';
 
 const ChatBotContainer = () => {
 
-    // const location = useLocation();
-    // console.log(location);
-
     /* ===== STATE ===== */
     const navigate = useNavigate();
     const location = useLocation();
-    
-    const [selectedLine, setSelectedLine] = useState('red_line');
+
     const [selectedCourse, setSelectedCourse] = useState('');
 
     const [stores, setStores] = useState([]);
-    const [filteredStores, setFilteredStores] = useState(null);
+    const [filteredStores, setFilteredStores] = useState([]);
 
     const [reply, setReply] = useState(null);
 
     const [selectedCategories, setSelectedCategories] = useState([]);
 
-    /* ===== EFFECT ===== */
-    useEffect(() => {
-        // setSelectedCourse(location?.state[0]);
+    const [groupedStores, setGroupedStores] = useState({
+        '1~5분': [],
+        '5~10분': [],
+        '10분~': [],
+    });
 
-        const fetchData = async () => {
-            const foodData = await handleSetLineStore();
-            if (foodData.length) {
-                console.log('음식점 데이터 로드 완료');
+    const [buttons, setButtons] = useState([
+        [
+            {
+                label: '1~5분',
+                onClick: (label, store) => {
+                    saveStore(label, store);
+                },
+            },
+            {
+                label: '5~10분',
+                onClick: (label, store) => {
+                    saveStore(label, store);
+                },
+            },
+            {
+                label: '10분~',
+                onClick: (label, store) => {
+                    saveStore(label, store);
+                },
+            },
+        ],
+        [
+            {
+
             }
-        };
-        fetchData();
-    }, []);
+        ],
+        [
+            [
 
+            ]
+        ],
+    ]);
 
+    const [buttonIndex, setButtonIndex] = useState(0);
+
+    const [chatMessage, setChatMessage] = useState('몇 분 거리의 음식점을 원하시나요?');
 
     /* ===== FUNCTION ===== */
 
-    // 1. 음식 카테고리 추출
-    const handleSendPrompt = async () => {
+    const saveStore = (label, store) => {
+        setStores(store[label]);
+        setButtonIndex((prev) => prev + 1);
+        setChatMessage('안드시는 음식이 있으신가요?');
+
+        handleSendPrompt(store[label]);
+    };
+
+    // 1. 시작 (가리별 음식점 분류)
+    const groupStoresByDistance = (stores) => {
+        const groups = {
+            '1~5분': [],
+            '5~10분': [],
+            '10분~': [],
+        };
+
+        stores.forEach((store) => {
+            const distance = store.distance;
+            if (distance <= 100) {
+                groups['1~5분'].push(store);
+            } else if (distance <= 300) {
+                groups['5~10분'].push(store);
+            } else {
+                groups['10분~'].push(store);
+            }
+        });
+
+        return groups;
+    };
+
+    const filterStoresByDistance = (range) => {
+        setFilteredStores(groupedStores[range]);
+    };
+
+    // 2. 음식 카테고리 추출
+    const handleSendPrompt = async (stores) => {
+        console.log(stores);
         if (!stores || stores.length === 0) {
             alert('음식점 데이터가 준비되지 않았습니다.');
             return;
@@ -57,6 +115,23 @@ const ChatBotContainer = () => {
             if (jsonMatch) {
                 const parsedReply = JSON.parse(jsonMatch[0]);
                 setReply(parsedReply);
+
+                const categoryButtons = parsedReply.map((category) => ({
+                    label: category,
+                    onClick: (category, groupedStores) => {
+                        setSelectedCategories((prev) =>
+                            prev?.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
+                        );
+                    },
+                }));
+
+                setButtons((prev) => {
+                    const updatedButtons = [...prev];
+                    updatedButtons[1] = categoryButtons;
+                    return updatedButtons;
+                });
+
+
             } else {
                 throw new Error("Invalid JSON response");
             }
@@ -75,7 +150,10 @@ const ChatBotContainer = () => {
         // y: store.y,
     }));
 
-    // 2. 사용자가 선택한 음식 카테고리로 음식점 찾기
+    // 3. 사용자가 못먹는 음식 거르기
+
+
+    // 4. 사용자가 선택한 음식 카테고리로 음식점 찾기
     const handleCategoryToggle = (category) => {
         setSelectedCategories((prev) =>
             prev?.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
@@ -94,6 +172,19 @@ const ChatBotContainer = () => {
             if (jsonMatch) {
                 const parsedStores = JSON.parse(jsonMatch[0]);
                 setFilteredStores(parsedStores);
+
+                navigate('/result', {
+                    state: {
+                        current_course: {
+                            place_name: location.state[0],
+                            address_name: location.state[1],
+                            lat: location.state[2],
+                            lng: location.state[3],
+                        },
+                        current_results: parsedStores,
+                    }
+                });
+
             } else {
                 throw new Error('Invalid JSON response');
             }
@@ -103,23 +194,32 @@ const ChatBotContainer = () => {
     };
 
 
-
     // 해당 코스 음식점들 추출
-    const handleSetLineStore = async (line) => {
-        // const line = await courseUtil.getCourse(selectedLine);
-        // const lineStoreData = await getLineDatas(line);
-        const lineStoreData = await getLineData(line);
+    // const handleSetLineStore = async (line) => {
+    //     const lineStoreData = await getLineData(line);
+    //     const groupedData = groupStoresByDistance(lineStoreData);
+    //     setGroupedStores(groupedData);
+    //     // setFilteredStores([]);
 
-        if (lineStoreData?.length) {
-            setStores(lineStoreData);
-            return lineStoreData;
-        }
-        return [];
-        // if (lineStoreData.length) {
-        //     setStores(lineStoreData);
-        //     return lineStoreData;
-        // }
-        // return [];
+    //     return lineStoreData;
+    //     // if (lineStoreData?.length) {
+    //     //     // setStores(lineStoreData);
+
+    //     //     const groupedData = groupStoresByDistance(lineStoreData);
+    //     //     setGroupedStores(groupedData);
+    //     //     setFilteredStores([]);
+
+    //     //     return lineStoreData;
+    //     // }
+    //     // return [];
+    // };
+
+    const handleSetLineStore = async (line) => {
+        const lineStoreData = await getLineData(line);
+        const groupedData = groupStoresByDistance(lineStoreData);
+        setGroupedStores(groupedData);
+        setStores(lineStoreData); // 전체 데이터 유지
+        return lineStoreData;
     };
 
     const getLineData = async (line) => {
@@ -153,41 +253,6 @@ const ChatBotContainer = () => {
         return filteredLineResult;
     }
 
-    const getLineDatas = async (lineData) => {
-        const lineResult = {};
-
-        // 특정 코스의 주변 음식점을 들고옴 (범위: 500미터 이내)
-        const radius = 500;
-        await Promise.all(
-            lineData.map(async (line) => {
-                let page = 1;
-                let meta = { is_end: false };
-                const dataCollection = [];
-
-                // while (!meta.is_end) {
-                const result = await kakaoUtil.getPlace(line[3], line[2], radius, page++);
-                dataCollection.push(...result.documents);
-                meta = result.meta;
-                // }
-
-                lineResult[line[0]] = dataCollection;
-            })
-        );
-
-        const filteredLineResult = lineResult[selectedCourse].map((item) => ({
-            address_name: item.address_name,
-            category_name: item.category_name,
-            place_name: item.place_name,
-            phone: item.phone,
-            x: item.x,
-            y: item.y,
-            distance: item.distance,
-        }));
-
-        return filteredLineResult;
-    };
-
-
     /* ===== EFFECT ===== */
     useEffect(() => {
         if (!location.state) {
@@ -203,7 +268,6 @@ const ChatBotContainer = () => {
         )()
 
         const fetchData = async () => {
-            // const foodData = await handleSetLineStore();
             const foodData = await handleSetLineStore(location.state);
             if (foodData.length) {
                 console.log('음식점 데이터 로드 완료');
@@ -212,26 +276,30 @@ const ChatBotContainer = () => {
         fetchData();
     }, []);
 
-    // console.log(selectedCourse);
-    // console.log(selectedLine);
-    console.log(stores);
-    console.log(reply);
-    console.log(selectedCategories);
-    console.log(filteredStores);
+    useEffect(() => {
+        console.log(groupedStores);
+    }, [groupedStores]);
 
     /* ===== RENDER ===== */
     return (
-        <ChatbotPresenter
+        <ChatBotPresenter
             reply={reply}
 
             onSendPrompt={handleSendPrompt}
             onFilteredStores={handleFilteredStores}
 
-            selectedLine={selectedLine}
             selectedCourse={selectedCourse}
 
             selectedCategories={selectedCategories}
             onCategoryClick={handleCategoryToggle}
+
+            chatMessage={chatMessage}
+
+            onDistanceFilter={filterStoresByDistance}
+
+            buttons={buttons}
+            groupedStores={groupedStores}
+            buttonIndex={buttonIndex}
         />
     );
 };

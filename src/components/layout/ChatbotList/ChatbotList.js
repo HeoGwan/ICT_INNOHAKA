@@ -7,14 +7,19 @@ import ChatbotButtonList from '../ChatbotButtonList';
 const ChatbotList = ({
     questions,
 
-    onSendPrompt,
     onFilteredStores,
 
-    lineName,
-    courseName = 'UN기념공원',
+    courseName,
 
     selectedCategories,
     onCategoryClick,
+
+    chatMessage,
+    onDistanceFilter,
+
+    buttons,
+    buttonIndex,
+    groupedStores,
 }) => {
     /* ===== STATE ===== */
     const [categories, setCategories] = useState([]);
@@ -39,30 +44,31 @@ const ChatbotList = ({
     return (
         <div className='chatbot-list-container'>
             <div className='title'>
-                <span style={{ ...styles.title }}>{lineName} - {courseName}</span>
+                <span style={{ ...styles.title }}>{courseName}</span>
                 <span style={{ fontWeight: 100 }}>주변의 음식점을 찾아드릴게요 !</span>
                 <div className='top'>
-                    <button className='start-button' onClick={onSendPrompt}>시작하기</button>
+                    <button className='start-button' onClick={onDistanceFilter}>시작하기</button>
+                    <button className='start-button' onClick={onFilteredStores}>테스트</button>
                 </div>
             </div>
             <div className='card-container'>
                 <ChatbotCard
-
+                    content={chatMessage}
                 />
             </div>
             {
-                categories?.length === 0 ? (
-                    <></>
-                ) : (
-                    <div className='buttons-container'>
-                        <ChatbotButtonList
-                            categories={categories}
+                <div className='buttons-container'>
+                    <ChatbotButtonList
+                        categories={categories}
 
-                            selectedCategories={selectedCategories}
-                            onClick={onCategoryClick}
-                        />
-                    </div>
-                )
+                        selectedCategories={selectedCategories}
+                        onClick={onCategoryClick}
+
+                        buttons={buttons}
+                        buttonIndex={buttonIndex}
+                        groupedStores={groupedStores}
+                    />
+                </div>
             }
         </div>
     );

@@ -7,25 +7,41 @@ const ChatBotPresenter = ({
     onSendPrompt,
     onFilteredStores,
 
-    selectedLine,
     selectedCourse,
 
     selectedCategories,
     onCategoryClick,
+
+    chatMessage,
+    onDistanceFilter,
+
+    buttons,
+    buttonIndex,
+    groupedStores,
 }) => {
+
+    /* ===== RENDER ===== */
     return (
         <div className='chatbot-container'>
             <ChatbotList
+
                 questions={reply}
 
                 onSendPrompt={onSendPrompt}
                 onFilteredStores={onFilteredStores}
 
-                lineName={selectedLine}
                 courseName={selectedCourse}
 
                 selectedCategories={selectedCategories}
                 onCategoryClick={onCategoryClick}
+
+                chatMessage={chatMessage}
+
+                onDistanceFilter={onDistanceFilter}
+
+                buttons={buttons}
+                buttonIndex={buttonIndex}
+                groupedStores={groupedStores}
             />
         </div>
     );

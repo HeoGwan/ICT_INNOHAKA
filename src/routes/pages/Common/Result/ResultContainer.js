@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ResultPresenter from "./ResultPresenter";
 
 const ResultContainer = ({
@@ -18,6 +18,7 @@ const ResultContainer = ({
      */
     const { kakao } = window;
     const navigate = useNavigate();
+    const location = useLocation();
     const mapRef = useRef(null);
 
     const [course, setCourse] = useState({
@@ -159,10 +160,13 @@ const ResultContainer = ({
     useEffect(() => {
         (
             async () => {
+                const { current_course, current_results } = location.state;
+                setCourse(current_course);
                 setCenter({
-                    lat: course.lat,
-                    lng: course.lng,
-                })
+                    lat: current_course.lat,
+                    lng: current_course.lng,
+                });
+                setResults(current_results);
             }
         )()
     }, []);

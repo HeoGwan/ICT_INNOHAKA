@@ -3,19 +3,26 @@ import './ChatbotButtonList.style.css';
 const ChatbotButtonList = ({
     categories,
     selectedCategories,
-    onClick
+    onClick,
+
+    buttons,
+    buttonIndex,
+    groupedStores,
 }) => {
+
+    /* ===== STATE ===== */
+    
 
     /* ===== RENDER ===== */
     return (
         <>
-            {categories?.map((category, index) => (
+            {buttons[buttonIndex]?.map((button, index) => (
                 <button
                     key={index}
-                    className={`chatbot-button ${selectedCategories.includes(category) ? 'selected' : ''}`}
-                    onClick={() => onClick(category)}
+                    className={`chatbot-button ${selectedCategories.includes(button.label) ? 'selected' : ''}`}
+                    onClick={() => button.onClick(button.label, groupedStores)}
                 >
-                    {category}
+                    {button.label}
                 </button>
             ))}
         </>
