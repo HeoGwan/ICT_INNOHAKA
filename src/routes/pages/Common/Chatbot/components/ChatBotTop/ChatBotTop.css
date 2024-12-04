@@ -1,0 +1,14 @@
+.chat-room-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    margin-top: 20px;
+
+    font-size: 18pt;
+}

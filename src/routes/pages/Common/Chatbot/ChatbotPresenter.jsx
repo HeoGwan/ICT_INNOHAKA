@@ -1,7 +1,12 @@
+import './ChatBot.css';
+// import Top from '../../../../components/Top';
+import ChatBotTop from './components/ChatBotTop';
+import ChatBotBody from './components/ChatBotBody';
 import { ChatbotList } from '../../../../components';
 import './Chatbot.style.css';
 
-const ChatbotPresenter = ({
+const ChatBotPresenter = ({
+    chatList,
     reply,
 
     onSendPrompt,
@@ -13,11 +18,10 @@ const ChatbotPresenter = ({
     selectedCategories,
     onCategoryClick,
 }) => {
-
-    /* ===== RENDER ===== */
     return (
         <div className='chatbot-container'>
             <ChatbotList
+                chatList={chatList}
                 questions={reply}
 
                 onSendPrompt={onSendPrompt}
@@ -33,4 +37,4 @@ const ChatbotPresenter = ({
     );
 };
 
-export default ChatbotPresenter;
+export default ChatBotPresenter;

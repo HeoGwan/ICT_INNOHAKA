@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import { ApiTest, Chatbot, Main, SelectCourse } from "./pages";
+import { ApiTest, Main, SelectCourse, ChatBot, SelectCourseInfo, Result } from "./pages";
 
 import '../index.css';
 
@@ -9,7 +9,7 @@ const Router = () => {
         <div className="app">
             <Routes>
                 <Route
-                    path="/"
+                    path="/main"
                     element={<Main />}
                 />
                 <Route
@@ -18,11 +18,19 @@ const Router = () => {
                 />
                 <Route
                     path='/chatbot'
-                    element={<Chatbot />}
+                    element={<ChatBot />}
                 />
                 <Route
                     path="/selectcourse"
                     element={<SelectCourse />}
+                />
+                <Route
+                    path="/result"
+                    element={<Result/>}
+                />
+                <Route
+                    path="/selectcourseinfo/:color"
+                    element={<SelectCourseInfo/>}
                 />
             </Routes>
         </div>

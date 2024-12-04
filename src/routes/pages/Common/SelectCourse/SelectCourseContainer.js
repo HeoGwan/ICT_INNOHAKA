@@ -8,9 +8,12 @@ const SelectCourseContainer = ({
 }) => {
     const navigate = useNavigate();
 
-    const selectCourse = async (course) => {
+    const selectCourse = async (course, color) => {
         const selectedCourse = await courseUtil.getCourse(course);
-        console.log(selectedCourse)
+        
+        navigate(`/selectcourseinfo/${color}`, {
+            state: selectedCourse
+        })
     }
 
     return (
