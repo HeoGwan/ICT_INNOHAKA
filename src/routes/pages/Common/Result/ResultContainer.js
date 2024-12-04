@@ -149,12 +149,16 @@ const ResultContainer = ({
             y: "35.09888829266081"
         }
     ]);
+    // const [results, setResults] = useState([]);
     const [level, setLevel] = useState(3);
     const [center, setCenter] = useState({
         lat: 35.0219245768,
         lng: 129.0192935576,
     });
-    const [marker, setMarker] = useState({ lat: -1, lng: -1 });
+    const [marker, setMarker] = useState({
+        lat: 35.0219245768,
+        lng: 129.0192935576,
+    });
 
 
     useEffect(() => {

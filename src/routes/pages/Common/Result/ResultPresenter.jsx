@@ -2,8 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import Pin from '../../../../assets/Pin.png';
+import { Empty } from "antd";
 
 import './Result.css';
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const ResultPresenter = ({
     navigate,
@@ -19,6 +21,10 @@ const ResultPresenter = ({
 
     return (
         <div className="result-container">
+            <BackButton
+                direction="left"
+                destination="first"
+            />
             <Map
                 center={{ lat: center.lat, lng: center.lng }}
                 style={{ width: '100%', height: '100vh' }}
@@ -55,6 +61,14 @@ const ResultPresenter = ({
                             </li>
                         )
                     })
+                }
+                {
+                    results.length === 0 &&
+                    <div className="empty-list">
+                        <Empty
+                            image={Empty.PRESENTED_IMAGE_SIMPLE}
+                        />
+                    </div>
                 }
             </ul>
         </div>
