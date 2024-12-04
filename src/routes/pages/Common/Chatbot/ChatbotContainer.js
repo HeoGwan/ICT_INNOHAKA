@@ -24,19 +24,6 @@ const ChatBotContainer = () => {
 
     const [selectedCategories, setSelectedCategories] = useState([]);
 
-    /* ===== EFFECT ===== */
-    useEffect(() => {
-        // setSelectedCourse(location?.state[0]);
-
-        const fetchData = async () => {
-            const foodData = await handleSetLineStore();
-            if (foodData.length) {
-                console.log('음식점 데이터 로드 완료');
-            }
-        };
-        fetchData();
-    }, []);
-
 
 
     /* ===== FUNCTION ===== */
@@ -221,7 +208,7 @@ const ChatBotContainer = () => {
 
     /* ===== RENDER ===== */
     return (
-        <ChatbotPresenter
+        <ChatBotPresenter
             reply={reply}
 
             onSendPrompt={handleSendPrompt}

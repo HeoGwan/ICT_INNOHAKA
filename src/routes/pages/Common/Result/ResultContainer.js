@@ -148,6 +148,7 @@ const ResultContainer = ({
             y: "35.09888829266081"
         }
     ]);
+    // const [results, setResults] = useState([]);
     const [level, setLevel] = useState(3);
     const [center, setCenter] = useState({
         lat: 35.0219245768,

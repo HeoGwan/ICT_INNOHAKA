@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import Pin from '../../../../assets/Pin.png';
+import { Empty } from "antd";
 
 import './Result.css';
 import BackButton from "../../../../components/BackButton/BackButton";
@@ -60,6 +61,14 @@ const ResultPresenter = ({
                             </li>
                         )
                     })
+                }
+                {
+                    results.length === 0 &&
+                    <div className="empty-list">
+                        <Empty
+                            image={Empty.PRESENTED_IMAGE_SIMPLE}
+                        />
+                    </div>
                 }
             </ul>
         </div>
