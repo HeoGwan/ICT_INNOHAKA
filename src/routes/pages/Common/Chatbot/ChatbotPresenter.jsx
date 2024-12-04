@@ -1,12 +1,7 @@
-import './ChatBot.css';
-// import Top from '../../../../components/Top';
-import ChatBotTop from './components/ChatBotTop';
-import ChatBotBody from './components/ChatBotBody';
-import { ChatbotList } from '../../../../components';
 import './Chatbot.style.css';
+import { ChatbotList } from '../../../../components';
 
 const ChatBotPresenter = ({
-    chatList,
     reply,
 
     onSendPrompt,
@@ -21,7 +16,6 @@ const ChatBotPresenter = ({
     return (
         <div className='chatbot-container'>
             <ChatbotList
-                chatList={chatList}
                 questions={reply}
 
                 onSendPrompt={onSendPrompt}

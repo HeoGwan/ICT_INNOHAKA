@@ -56,7 +56,7 @@ const SelectCourseInfoContainer = () => {
         // 어딘가로 course 정보를 보낸다
         // course 정보는 아래와 같다
         // [정류장 이름, 주소, 위도, 경도] => public 폴더의 csv 폴더의 csv 파일 정보
-        navigate('/', {
+        navigate('/chatbot', {
             state: course
         })
     }
