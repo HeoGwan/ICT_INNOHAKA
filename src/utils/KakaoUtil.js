@@ -20,6 +20,7 @@ class KakaoUtil {
             radius,
             page,
             category_group_code: this.category,
+            sort: 'distance',
         };
 
         this.queryString = new URLSearchParams(this.params).toString();
