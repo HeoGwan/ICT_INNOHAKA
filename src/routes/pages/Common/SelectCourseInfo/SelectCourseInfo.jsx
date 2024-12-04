@@ -59,23 +59,27 @@ const SelectCourseInfo = () => {
     const renderCourse = (course, color) => {
         return (
             <div className="course-container">
-                {course.map((stop, index) => (
-                    <div
-                        className="station-container"
-                        key={index}
-                        style={{ borderColor: color }}
-                    >
-                        <div className="station">
-                            <span className="station-name">{stop}</span>
+                {
+                    course.map((stop, index) => (
+                        <div
+                            className={`station-container ${(index + 1) % 5 === 0 ? 'bottom' : ''}`}
+                            key={index}
+                            style={{ borderColor: color }}
+                        >
+                            <div className="station">
+                                <span className="station-name">{stop}</span>
+                            </div>
+                            {
+                                index < course.length - 1 && (
+                                    <div
+                                        className="station-line"
+                                        style={{ backgroundColor: color }}
+                                    ></div>
+                                )
+                            }
                         </div>
-                        {index < course.length - 1 && (
-                            <div
-                                className="station-line"
-                                style={{ backgroundColor: color }}
-                            ></div>
-                        )}
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         );
     };

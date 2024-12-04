@@ -8,10 +8,10 @@ const SelectCourseContainer = ({
 }) => {
     const navigate = useNavigate();
 
-    const selectCourse = async (course) => {
+    const selectCourse = async (course, color) => {
         const selectedCourse = await courseUtil.getCourse(course);
         
-        navigate('/chatbot', {
+        navigate(`/selectcourseinfo/${color}`, {
             state: selectedCourse
         })
     }

@@ -1,86 +1,133 @@
-.course-info-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
+/* 변경 */
+.select-course-info-container {
+  width: 100%;
+  height: 100%;
 
-.course-container {
   display: flex;
-  flex-wrap: wrap; /* 줄바꿈 허용 */
-  align-items: center; /* 세로 정렬을 유지 */
-
-
-}
-
-.course-title {
-  color: #333;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 24px;
-  font-family: 'nanum-gothic';
-  text-transform: uppercase;
-}
-
-.course-container {
-  display: flex;
-  flex-wrap: wrap; /* 줄바꿈 허용 */
-  align-items: center; /* 세로 정렬을 유지 */
-}
-
-.station-container {
-  display: flex;
-  flex-direction: column; /* 정거장과 선을 수직 정렬 */
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  margin: 20px 60px; /* 정거장 간 간격 */
-  position: relative; /* 선 숨기기 조정을 위해 */
-
 }
 
-.station {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 2px solid #ccc;
-  border-radius: 12px;
+.select-course-info-container .select-course-info-header {
+  width: 100%;
+  height: 0.5rem;
 
-  padding: 6px;
-  
-  width: 50px;
-  height: 50px;
-  font-size: 12px;
+  padding: 0 1rem;
+
+  font-weight: bold;
+}
+
+.select-course-info-container .select-course-info-header span {
+  margin-left: 1rem;
+}
+
+/* 각 가로줄을 나타냄 */
+.select-course-info-container .select-course-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5rem;
+}
+
+.select-course-info-container .select-course-list.reverse {
+  flex-direction: row-reverse;
+}
+
+
+/* 각각의 요소를 나타냄 */
+.select-course-info-container .select-course-list .select-course-item {
+  position: relative;
+
+  width: 100px;
+  height: 100px;
+  font-size: 12pt;
+  border: 2px solid var(--line-color);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 2rem 1rem;
+
+  word-break: keep-all;
+
+  cursor: pointer;
 }
 
-.station-name {
-  margin-top: 5px;
-  font-size: 10px;
+.select-course-info-container .select-course-list .select-course-item img {
+  width: 100%;
 }
 
-.station-line {
-  width: 120px;
-  height: 4px;
-  background-color: #ccc;
-  margin-top: 10px;
+/* 줄 색깡 */
+.select-course-item.red {
+  --line-color: red;
+}
+
+.select-course-item.green {
+  --line-color: green;
+}
+
+.select-course-item.orange {
+  --line-color: orange;
+}
+
+/* 오른쪽 줄 */
+.select-course-info-container .select-course-list .select-course-item.right::after {
+  content: '';
+
   position: absolute;
+  top: 50%;
   left: 100%;
-  top: 35%;
   transform: translateY(-50%);
-}
-.line {
+
+  width: 140px;
   height: 4px;
-  width: 40px;
-  background-color: #ccc;
-  margin: 10px 0;
+  background-color: var(--line-color);
+
+  z-index: -1;
 }
 
-.line.orange {
-  background-color: orange;
+/* 왼쪽 줄 */
+.select-course-info-container .select-course-list .select-course-item.left::after {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translateY(50%);
+
+  width: 140px;
+  height: 4px;
+  background-color: var(--line-color);
+
+  z-index: -1;
 }
 
-.line.green {
-  background-color: green;
+/* 아래쪽 줄 */
+.select-course-info-container .select-course-list .select-course-item.bottom::after {
+  content: '';
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(50%);
+
+  width: 4px;
+  height: 140px;
+  background-color: var(--line-color);
+
+  z-index: -1;
 }
 
-.line.red {
-  background-color: red;
+/* 자리 채우기용 */
+.select-course-info-container .select-course-list .select-course-item.none {
+  box-shadow: none;
+  border: none;
 }
